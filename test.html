@@ -119,9 +119,6 @@
           <div class="list-group" id="list-tab" role="tablist">
             <h3>POS DATA</h3>
             <a class="list-group-item list-group-item-action list-group-item-dark" id="list-context-list" fId="printContext()" data-toggle="list" href="#list-context" role="tab" aria-controls="context">Show POS Context</a>
-            <a class="list-group-item list-group-item-action list-group-item-dark" id="list-version-list" fId="printVersion()" data-toggle="list" href="#list-version" role="tab" aria-controls="version">Show App Version</a>
-            <h3>ACCOUNT</h3>
-            <a class="list-group-item list-group-item-action list-group-item-dark" id="list-account-list" fId="getCurrentAccount()" data-toggle="list" href="#list-account" role="tab" aria-controls="account">Show Current Account</a>
       </div>
       </div>
       <!--TAB CONTENTs-->
@@ -139,97 +136,6 @@
                   <div id="list-context-content"></div>
                 </div>
               </div>
-              <div class="card bg-dark">
-                <div class="card-header text-white">Code Example</div>
-                <div class="card-body">
-                  <p class="card-text">
-                    <pre class="fs-6 pretty-printed">
-                      <code class="language-javascript text-white">
-                      posContext.businessId
-                      posContext.businessName
-                      posContext.locationId
-                      posContext.deviceName
-                      posContext.deviceId
-                      posContext.userName
-                      posContext.userId
-                      </code>
-                </pre>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <!--Show POS App Version-->
-            <div class="tab-pane fade" role="tabpanel" aria-labelledby="list-version-list" id="list-version">
-              <div class="card text-white bg-dark mb-3">
-                <div class="card-header">POS App Version</div>
-                <div class="card-body">
-                  <div id="list-version-content"></div>
-                </div>
-              </div>
-              <div class="card bg-dark mb-3">
-                <div class="card-header text-white">Code Example</div>
-                <div class="card-body">
-                  <p class="card-text">
-                    <pre class="fs-6 pretty-printed">
-                      <code class="language-javascript text-white">
-                        function pos_getVersion(callback) {
-                          const callbackId = pos_generateCallbackId()
-                          callbacks[callbackId] = callback
-                      
-                          const data = {
-                              name : 'getVersion',
-                              args : { callbackId }
-                          }
-                      
-                          pos_postMessage(data)
-                      }
-                      Fetches the POS app's version number.
-                      
-                      @param {posCallback} callback
-                      The callback that will be invoked when the native function is done executing.
-                      </code>
-                    </pre>
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <!--ACCOUNT-->
-            <!--Get Current Account-->
-            <div class="tab-pane fade" role="tabpanel" aria-labelledby="list-account-list" id="list-account">
-              <div class="card text-white bg-dark mb-3">
-                <div class="card-header">Current Account Details</div>
-                <div class="card-body">
-                  <div id="list-account-content"></div>
-                </div>
-              </div>
-              <div class="card bg-dark mb-3">
-                <div class="card-header text-white">Code Example</div>
-                <div class="card-body">
-                  <p class="card-text">
-                    <pre class="fs-6">
-                      <code class="language-javascript text-white">
-                        function pos_getCurrentAccount(callback) {
-                          const callbackId = pos_generateCallbackId()
-                          callbacks[callbackId] = callback
-                      
-                          const data = {
-                              name : 'getCurrentAccount',
-                              args : { callbackId }
-                          }
-                      
-                          pos_postMessage(data)
-                      }
-                      Fetches the current account.
-                      
-                      @param {posCallback} callback
-                      The callback that will be invoked when the native function is done executing.
-                      </code>
-                    </pre>
-                  </p>
-                </div>
-              </div>
-            </div>
   <script>
       function syntaxHighlight(json) {
         if (typeof json != 'string') {
