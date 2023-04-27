@@ -28,7 +28,122 @@
   });
 </script>
   
-<script>
+
+  <style>
+    @media(min-width: 768px) {
+      .flex {
+        display: flex;
+        align-items: center;
+      }
+
+      body {
+        font-family: 'Source Sans Pro', sans-serif;
+      }
+    }
+
+    .btn-outline-primary {
+      background-color: #2E61DE !important;
+      color: #FFFFFF !important;
+      border: none;
+    }
+
+    .btn-outline-secondary {
+      background-color: #FFFFFF !important;
+      color: #FFFFFF !important;
+      border: none;
+    }
+
+    pre {
+      font-size:small;
+      overflow: auto;
+    }
+
+    .tab-pane {
+      margin-bottom: 20px;
+    }
+
+    .navbar-nav {
+        float:none;
+        margin:0 auto;
+        display: block;
+        text-align: center;
+    }
+
+    .navbar-nav > li {
+        display: inline-block;
+        float:none;
+    }
+
+    h3 {
+      padding-top: 10px;
+    }
+
+    footer {
+      padding-top: 30px;
+    }
+
+    video {
+      background-color: black;
+      margin-bottom: 1rem;
+    }
+          
+    #error {
+      color: red;
+      padding: 0.6rem;
+      background-color: rgb(236 157 157);
+      margin-bottom: 0.6rem;
+      display: none;
+    }
+  </style
+</head>
+
+<body onload="">
+  <!--TOP NAV-->
+  <nav class="navbar navbar-dark bg-dark mx-auto text-white">
+    <ul class="navbar-nav mx-auto">
+      <li>
+        <a class="navbar-brand" href="#">
+          <img
+            src="https://www.eposni.com/wp-content/uploads/2021/07/ls-logo-RedBlack.png"
+            class="me-2"
+            height="30"
+            alt="Lightspeed"
+            loading="lazy"
+          />
+        </a>
+      </li>
+      <li>
+        <h6>K-Series Web Extensions Demo</h6>
+      </li>
+    </ul>
+  </nav>
+  <div id="myDiv"> Hello World </div>
+  <!--MAIN CONTAINER-->
+  <div class="container-fluid">
+    <div class="row">
+      <!--SIDEBAR NAV-->
+      <div class="col-4 bg-white">
+          <div class="list-group" id="list-tab" role="tablist">
+            <h3>POS DATA</h3>
+            <a class="list-group-item list-group-item-action list-group-item-dark" id="list-context-list" fId="printContext()" data-toggle="list" href="#list-context" role="tab" aria-controls="context">Show POS Context</a>
+      </div>
+      </div>
+      <!--TAB CONTENTs-->
+      <div class="col-8 bg-white">
+          <div class="tab-content" id="nav-tabContent">
+            <!-- ERROR MESSAGE ALERT-->
+            <div class="alert alert-danger alert-dismissible fade hide" role="alert" id="errorAlert">
+            </div>
+            <!--POS DATA-->
+            <!--Show POS Context-->
+            <div class="tab-pane fade show" role="tabpanel" aria-labelledby="list-context-list" id="list-context">
+              <div class="card text-white bg-dark mb-3">
+                <div class="card-header">POS Context</div>
+                <div class="card-body">
+                  <div id="list-context-content"></div>
+                </div>
+              </div>
+    <script>
       function syntaxHighlight(json) {
         if (typeof json != 'string') {
           json = JSON.stringify(json, undefined, 2);
@@ -424,121 +539,6 @@ stop all the mediaTracks by calling its stop() method*/
       })
 
   </script>
-  <style>
-    @media(min-width: 768px) {
-      .flex {
-        display: flex;
-        align-items: center;
-      }
-
-      body {
-        font-family: 'Source Sans Pro', sans-serif;
-      }
-    }
-
-    .btn-outline-primary {
-      background-color: #2E61DE !important;
-      color: #FFFFFF !important;
-      border: none;
-    }
-
-    .btn-outline-secondary {
-      background-color: #FFFFFF !important;
-      color: #FFFFFF !important;
-      border: none;
-    }
-
-    pre {
-      font-size:small;
-      overflow: auto;
-    }
-
-    .tab-pane {
-      margin-bottom: 20px;
-    }
-
-    .navbar-nav {
-        float:none;
-        margin:0 auto;
-        display: block;
-        text-align: center;
-    }
-
-    .navbar-nav > li {
-        display: inline-block;
-        float:none;
-    }
-
-    h3 {
-      padding-top: 10px;
-    }
-
-    footer {
-      padding-top: 30px;
-    }
-
-    video {
-      background-color: black;
-      margin-bottom: 1rem;
-    }
-          
-    #error {
-      color: red;
-      padding: 0.6rem;
-      background-color: rgb(236 157 157);
-      margin-bottom: 0.6rem;
-      display: none;
-    }
-  </style
-</head>
-
-<body onload="">
-  <!--TOP NAV-->
-  <nav class="navbar navbar-dark bg-dark mx-auto text-white">
-    <ul class="navbar-nav mx-auto">
-      <li>
-        <a class="navbar-brand" href="#">
-          <img
-            src="https://www.eposni.com/wp-content/uploads/2021/07/ls-logo-RedBlack.png"
-            class="me-2"
-            height="30"
-            alt="Lightspeed"
-            loading="lazy"
-          />
-        </a>
-      </li>
-      <li>
-        <h6>K-Series Web Extensions Demo</h6>
-      </li>
-    </ul>
-  </nav>
-  <div id="myDiv"> Hello World </div>
-  <!--MAIN CONTAINER-->
-  <div class="container-fluid">
-    <div class="row">
-      <!--SIDEBAR NAV-->
-      <div class="col-4 bg-white">
-          <div class="list-group" id="list-tab" role="tablist">
-            <h3>POS DATA</h3>
-            <a class="list-group-item list-group-item-action list-group-item-dark" id="list-context-list" fId="printContext()" data-toggle="list" href="#list-context" role="tab" aria-controls="context">Show POS Context</a>
-      </div>
-      </div>
-      <!--TAB CONTENTs-->
-      <div class="col-8 bg-white">
-          <div class="tab-content" id="nav-tabContent">
-            <!-- ERROR MESSAGE ALERT-->
-            <div class="alert alert-danger alert-dismissible fade hide" role="alert" id="errorAlert">
-            </div>
-            <!--POS DATA-->
-            <!--Show POS Context-->
-            <div class="tab-pane fade show" role="tabpanel" aria-labelledby="list-context-list" id="list-context">
-              <div class="card text-white bg-dark mb-3">
-                <div class="card-header">POS Context</div>
-                <div class="card-body">
-                  <div id="list-context-content"></div>
-                </div>
-              </div>
-    
  
 </body>
 <footer class="bg-white text-right text-lg-start">
