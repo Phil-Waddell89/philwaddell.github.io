@@ -6,19 +6,21 @@
       function printContext() {
         var outputDiv = document.getElementById("output");
         if (typeof posContext === "undefined") {
-          outputDiv.innerHTML = "Hello, World!";
+          outputDiv.innerHTML = "Loading POS Context...";
+          setTimeout(printContext, 1000);
         } else {
           outputDiv.innerHTML = "<pre>" + JSON.stringify(posContext, null, 2) + "</pre>";
+          var iframe = document.createElement("iframe");
+          iframe.src = "https://lsapacproserv.retool.com/embedded/public/f095bb33-7a9e-4fba-a294-c566cfc150a4";
+          iframe.style.width = "100%";
+          iframe.style.height = "600px";
+          document.body.appendChild(iframe);
         }
       }
-      
-      setTimeout(function() {
-        printContext();
-      }, 1000);
+      document.addEventListener('DOMContentLoaded', printContext);
     </script>
   </head>
   <body>
     <div id="output"></div>
-    <button id="myButton" onclick="printContext()">Test Context</button>
   </body>
-</html> 
+</html>
