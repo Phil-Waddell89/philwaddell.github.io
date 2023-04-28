@@ -19,10 +19,12 @@
           setTimeout(function() {
             pos_getCurrentAccount(function(response) {
               document.getElementById("list-account-content").innerHTML = "<pre class='text-white'>" + JSON.stringify(response.data, undefined, 2) + "</pre>";
+              var totalAmount = response.data.totalAmount
               // Get the businessId from posContext
               var businessId = posContext.businessId;
               // Set the businessId value as the innerHTML of the target div element
               document.getElementById("testDiv").innerHTML = businessId;
+              document.getElementById("testDiv2").innerHTML = totalAmount;
             });
           }, 1000);
         }
@@ -35,6 +37,7 @@
     <div id="output"></div>
     <div id="container"></div>
     <div id="list-account-content"></div>
-    <div id="testDiv">Hello Lightspeed!</div>
+    <div id="testDiv">Business ID</div>
+    <div id="testDiv2">Total Amount</div>
   </body>
 </html>
