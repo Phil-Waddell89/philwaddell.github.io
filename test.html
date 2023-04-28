@@ -19,6 +19,10 @@
           setTimeout(function() {
             pos_getCurrentAccount(function(response) {
               document.getElementById("list-account-content").innerHTML = "<pre class='text-white'>" + JSON.stringify(response.data, undefined, 2) + "</pre>";
+              // Get the businessId from posContext
+              var businessId = posContext.businessId;
+              // Set the businessId value as the innerHTML of the target div element
+              document.getElementById("testDiv").innerHTML = businessId;
             });
           }, 1000);
         }
