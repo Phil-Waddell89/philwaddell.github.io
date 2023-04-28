@@ -11,11 +11,7 @@
           setTimeout(printContext, 1000);
         } else {
           outputDiv.innerHTML = "<pre>" + JSON.stringify(posContext, null, 2) + "</pre>";
-          var iframe = document.createElement("iframe");
-          iframe.src = "https://lsapacproserv.retool.com/embedded/public/f095bb33-7a9e-4fba-a294-c566cfc150a4";
-          iframe.style.width = "100%";
-          iframe.style.height = "600px";
-          document.body.appendChild(iframe);
+          var rt = window.retool.RetoolDashboard(document.getElementById('container'), "https://lsapacproserv.retool.com/embedded/public/f095bb33-7a9e-4fba-a294-c566cfc150a4");
         }
       }
       document.addEventListener('DOMContentLoaded', printContext);
@@ -23,6 +19,8 @@
   </head>
   <body>
     <div id="output"></div>
+    <div id="container"></div>
     <div id="testDiv">Hello Lightspeed!</div>
   </body>
 </html>
+
