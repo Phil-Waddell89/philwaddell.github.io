@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Example Page</title>
-     <script src="https://cdn.tryretool.com/embed.js"> </script>
+     <script src="https://cdn.tryretool.com/embed.js"> </script> // Load the reTool JS SDK
     <script>
       function printContext() {
         var outputDiv = document.getElementById("output");
@@ -11,6 +11,7 @@
           setTimeout(printContext, 1000);
         } else {
           outputDiv.innerHTML = "<pre>" + JSON.stringify(posContext, null, 2) + "</pre>";
+          // Add the retool dashboard embed. This must occur to read data into the app.
           var rt = window.retool.RetoolDashboard(document.getElementById('container'), "https://lsapacproserv.retool.com/embedded/public/f095bb33-7a9e-4fba-a294-c566cfc150a4");
         }
       }
