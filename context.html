@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Page</title>
+  <script>
+    window.addEventListener('load', function () {
+      printContext();
+    });
+
+    function printContext() {
+      document.getElementById("list-context-content").innerHTML = "<pre class='text-white'>"+JSON.stringify(posContext, undefined, 2)+"</pre>"
+      document.getElementById("myDiv").innerHTML = "<pre class='text-black'>"+JSON.stringify(posContext, undefined, 2)+"</pre>"
+    }
+  </script>
+</head>
+<body>
+  <div id="list-context-content"></div>
+  <div id="myDiv"></div>
+</body>
+</html>
