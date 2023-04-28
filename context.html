@@ -12,13 +12,13 @@
         }
       }
       
-      window.addEventListener('load', function() {
-        document.getElementById("myButton").click();
-      });
+      setTimeout(function() {
+        printContext();
+      }, 1000);
     </script>
   </head>
   <body>
     <div id="output"></div>
     <button id="myButton" onclick="printContext()">Print Context</button>
   </body>
-</html>
+</html> 
