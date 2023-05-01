@@ -6,7 +6,7 @@
        html, body {
         height: 100%;
       }
-      #posContextDiv, #accountContext, #discountContext {
+      #posContext, #accountContext, #discountContext {
         display: none;
       }
     </style>
@@ -27,25 +27,26 @@
             width: "100%",
            }
           );
-          
-// Fetch current account with a 1 second delay
-setTimeout(function() {
-  pos_getCurrentAccount(function(response) {
-    document.getElementById("accountContext").innerHTML = "<pre class='text-white'>" + JSON.stringify(response.data, undefined, 2) + "</pre>";
-    // Call the getAvailableDiscounts() function with a 1-second delay
-    setTimeout(getAvailableDiscounts, 1000);
-  });
-}, 1000);
+        // Fetch current account with a 1 second delay
+          setTimeout(function() {
+            pos_getCurrentAccount(function(response) {
+              document.getElementById("accountContext").innerHTML = "<pre class='text-white'>" + JSON.stringify(response.data, undefined, 2) + "</pre>";
+              // Call the getAvailableDiscounts() function with a 1-second delay
+              setTimeout(getAvailableDiscounts, 1000);
+            });
+          }, 1000);
+        }
+      }
 
-//Get Available Discounts
-function getAvailableDiscounts() {
-  const printResult = function (response) {
-    document.getElementById("discountsContext").innerHTML = "<pre class='text-white'>"+JSON.stringify(response.data, undefined, 2)+"</pre>"
-  };
-  pos_getAvailableDiscounts(printResult)
-}
+      //Get Available Discounts
+      function getAvailableDiscounts() {
+        const printResult = function (response) {
+          document.getElementById("discountsContext").innerHTML = "<pre class='text-white'>"+JSON.stringify(response.data, undefined, 2)+"</pre>"
+        };
+        pos_getAvailableDiscounts(printResult)
+      }
 
-document.addEventListener('DOMContentLoaded', printContext);
+      document.addEventListener('DOMContentLoaded', printContext);
 
     </script>
   </head>
