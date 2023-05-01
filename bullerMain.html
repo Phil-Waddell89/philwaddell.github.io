@@ -13,7 +13,7 @@
     <script src="https://cdn.tryretool.com/embed.js"></script>
     <script>
       function printContext() {
-        var outputDiv = document.getElementById("posContext");
+        var outputDiv = document.getElementById("posContextDiv");
         if (typeof posContext === "undefined") {
           outputDiv.innerHTML = "Loading POS Context...";
           setTimeout(printContext, 1000);
@@ -50,7 +50,7 @@
     </script>
   </head>
   <body>
-    <div id="posContext"></div>
+    <div id="posContextDiv"></div>
     <div id="accountContext"></div>
     <div id="container" style="height: 100%; width: 100%;"></div>
     <div id="discountContext"></div>
