@@ -11,24 +11,48 @@
           setTimeout(printContext, 1000);
         } else {
           outputDiv.innerHTML = "<pre>" + JSON.stringify(posContext, null, 2) + "</pre>";
-          var rt = window.retool.RetoolDashboard(document.getElementById('container'), "https://lsapacproserv.retool.com/embedded/public/f095bb33-7a9e-4fba-a294-c566cfc150a4", {
+          
+          // Add the retool dashboard embed. This must occur to read data into the app.
+          var rt = window.retool.RetoolDashboard(document.getElementById('container'),"https://lsapacproserv.retool.com/embedded/public/ca58c0d0-2e4a-4a21-8feb-0a5a704ea02b",
+          {
             height: "100%",
             width: "100%",
-          });
+           }
+          );
+          // Fetch current account with a 1 second delay
+          setTimeout(function() {
+            pos_getCurrentAccount(function(response) {
+              document.getElementById("list-account-content").innerHTML = "<pre class='text-white'>" + JSON.stringify(response.data, undefined, 2) + "</pre>";
+              var totalAmount = response.data.totalAmount
+              // Get the businessId from posContext
+              var businessId = posContext.businessId;
+              // Set the businessId value as the innerHTML of the target div element
+              document.getElementById("testDiv").innerHTML = businessId;
+              document.getElementById("testDiv2").innerHTML = totalAmount;
+              // Call the getAvailableDiscounts() function with a 1-second delay
+              setTimeout(getAvailableDiscounts, 1000);
+            });
+          }, 1000);
         }
       }
+
+      //Get Available Discounts
+      function getAvailableDiscounts() {
+        const printResult = function (response) {
+          document.getElementById("list-discounts-content").innerHTML = "<pre class='text-white'>"+JSON.stringify(response.data, undefined, 2)+"</pre>"
+        };
+        pos_getAvailableDiscounts(printResult)
+      }
+
       document.addEventListener('DOMContentLoaded', printContext);
     </script>
-    <style>
-      html, body, #container {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-    </style>
   </head>
   <body>
     <div id="output"></div>
-    <div id="container"></div>
+    <div id="list-account-content"></div>
+    <div id="testDiv">Business ID</div>
+    <div id="testDiv2">Total Amount</div>
+    <div id="container" style="height: 100%; width: 100%;"></div>
+    <div id="list-discounts-content"></div>
   </body>
 </html>
