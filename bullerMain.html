@@ -12,6 +12,8 @@
     </style>
     <script src="https://cdn.tryretool.com/embed.js"></script>
     <script>
+      var getCurrentAccountFunc;
+
       function printContext() {
         var outputDiv = document.getElementById("posContextDiv");
         if (typeof posContext === "undefined") {
@@ -28,21 +30,26 @@
            }
           );
           
-      //Get Available Discounts
-      function getAvailableDiscounts() {
-        const printResult = function (response) {
-          document.getElementById("discountsContext").innerHTML = "<pre class='text-white'>"+JSON.stringify(response.data, undefined, 2)+"</pre>"
-        };
-        pos_getAvailableDiscounts(printResult)
-      }
-        // Fetch current account with a 1 second delay
-          setTimeout(function() {
-            pos_getCurrentAccount(function(response) {
-              document.getElementById("accountContext").innerHTML = "<pre class='text-white'>" + JSON.stringify(response.data, undefined, 2) + "</pre>";
-              // Call the getAvailableDiscounts() function with a 1-second delay
-              setTimeout(getAvailableDiscounts, 1000);
-            });
-          }, 1000);
+          //Get Available Discounts
+          function getAvailableDiscounts() {
+            const printResult = function (response) {
+              document.getElementById("discountsContext").innerHTML = "<pre class='text-white'>"+JSON.stringify(response.data, undefined, 2)+"</pre>"
+            };
+            pos_getAvailableDiscounts(printResult)
+          }
+
+          getCurrentAccountFunc = function(response) {
+            document.getElementById("accountContext").innerHTML = "<pre class='text-white'>" + JSON.stringify(response.data, undefined, 2) + "</pre>";
+            setTimeout(getAvailableDiscounts, 1000);
+          };
+          pos_getCurrentAccount(getCurrentAccountFunc);
+
+          // Add an event listener to the window object that listens for the "message" event.
+          window.addEventListener("message", function(event) {
+            if (event.data === "rerunGetAccount") {
+              getCurrentAccountFunc();
+            }
+          });
         }
       }
 
